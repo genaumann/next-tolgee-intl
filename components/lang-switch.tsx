@@ -5,6 +5,7 @@ import {useParams} from 'next/navigation'
 import {NextIntlClientProvider} from 'next-intl'
 import {usePathname, useRouter} from '@/i18n/routing'
 import {LOCALES} from '@/lib/tolgee/base'
+import {setUserLocale} from '@/lib/cookie'
 
 interface LocaleMap {
   [key: string]: {
@@ -31,7 +32,9 @@ function SelectComponent({locale}: {locale: LOCALES}) {
   }
 
   const changeLocale = async (event: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = event.target.value
+    const nextLocale = event.target.value as LOCALES
+    await setUserLocale(nextLocale)
+    await new Promise(resolve => setTimeout(resolve, 100))
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- TypeScript will validate that only known `params`
