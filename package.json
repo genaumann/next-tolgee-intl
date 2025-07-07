@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "predev": "npx dotenv -e .env.local -- tsx scripts/fetchTolgee.ts",
+    "prebuild": "npx dotenv -e .env.local -- tsx scripts/fetchTolgee.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,9 +25,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }

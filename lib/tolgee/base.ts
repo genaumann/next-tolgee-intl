@@ -6,6 +6,8 @@ export enum LOCALES {
   en = 'en'
 }
 
+export const NAMESPACES = ['common', 'app']
+
 export function TolgeeBase() {
   const tolgee = Tolgee()
     .use(FormatSimple()) // Super light formatter, which will enable you to pass variables into translations.
